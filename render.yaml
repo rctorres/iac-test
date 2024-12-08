@@ -11,6 +11,9 @@ services:
     runtime: image
     region: ohio
     plan: free
+    registryCredential:
+      fromRegistryCreds:
+        name: DockerHub
     image:
       url: rctorres/zefleu-delta-notional-svc-api:0.24
       creds:
