@@ -7,8 +7,8 @@ services:
     maxmemoryPolicy: noeviction
 
   - type: web
-    name: 'api'
-    runtime: 'docker'
+    name: api
+    runtime: docker
     region: ohio
     plan: free
     image:
