@@ -17,6 +17,6 @@ services:
       creds:
         fromRegistryCreds:
           name: DockerHub
-envVars:
-  - key: DEBUG
-    value: false
+    envVars:
+      - key: DEBUG
+        value: false
