@@ -1,5 +1,4 @@
 services:
-  # A Redis instance that defines all available fields
   - type: redis
     name: no-sql-db
     ipAllowList: []
