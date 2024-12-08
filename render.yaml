@@ -1,29 +1,22 @@
-project:
-  name: TEST-PROJECT
-  environments:
-    - name: TEST-ENVIRONMENT
-      region: ohio
-
-databases:
-  - name: ${ENV_PREFIX}-nosql-db
-    type: redis
-    plan: free
-    maxMemoryPolicy: noeviction
+services:
+  # A Redis instance that defines all available fields
+  - type: redis
+    name: no-sql-db
+    ipAllowList: []
     region: ohio
-    environment: TEST-ENVIRONMENT
+    plan: free
+    maxmemoryPolicy: noeviction
 
   - type: web
-    name: ${ENV_PREFIX}-api
+    name: 'api'
+    runtime: 'docker'
     region: ohio
     plan: free
-    dockerImage:
-      image: docker.io/rctorres/zefleu-delta-notional-svc-api:0.24
-      credentials:
-        username: test_user
-        password: test_pass
-    envVars:
-      - key: DEBUG
-        value: "False"
-      - key: ZEFLEU_LOG_LEVEL
-        value: "INFO"
-    environment: TEST-ENVIRONMENT
+    image:
+      url: rctorres/zefleu-delta-notional-svc-api:0.24
+      creds:
+        fromRegistryCreds:
+          name: DockerHub
+envVars:
+  - key: DEBUG
+    value: false
