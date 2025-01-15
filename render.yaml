@@ -5,7 +5,7 @@ services:
     region: ohio
     plan: 'free'
     image:
-      url: rctorres/iac-test:0.2
+      url: rctorres/iac-test:2025-01-15-becd4b7
     envVars:
       - key: DEBUG
         value: true
