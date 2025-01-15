@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: api
+    name: production-api
     runtime: docker
     region: ohio
     plan: 'free'
