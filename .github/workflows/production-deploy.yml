@@ -37,5 +37,9 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add render.yaml
+          if git diff --staged --quiet; then
+            echo "No changes detected in render.yaml. Deployment not needed."
+            exit 0
+          fi
           git commit -m "Sync production with staging image: ${{ steps.staging-version.outputs.STAGING_IMAGE }}"
           git push
