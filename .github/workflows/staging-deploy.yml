@@ -34,7 +34,7 @@ jobs:
         run: |
           sed -i "s|url: rctorres/iac-test:.*|url: rctorres/iac-test:${{ steps.version.outputs.VERSION }}|" render.yaml
 
-      - name: Commit and push render.yaml changes
+      - name: First commit - Update image version
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
@@ -42,9 +42,10 @@ jobs:
           git commit -m "Update image version to ${{ steps.version.outputs.VERSION }}"
           git push
 
-      - name: Deploy to Render
+      - name: Wait for first sync to complete
+        run: sleep 30
+
+      - name: Second commit - Trigger sync
         run: |
-          curl --request PATCH \
-          --url https://api.render.com/v1/blueprints/exs-cu3tao3tq21c73arfjr0 \
-          --header 'content-type: application/json' \
-          --header 'Authorization: Bearer ${{ secrets.RENDER_API_KEY }}'
+          git commit --allow-empty -m "Trigger Render sync"
+          git push
