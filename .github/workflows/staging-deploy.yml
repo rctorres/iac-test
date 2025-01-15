@@ -1,0 +1,44 @@
+name: Build and Deploy to Staging
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Generate version
+        id: version
+        run: |
+          echo "VERSION=$(date +'%Y-%m-%d')-${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: rctorres/iac-test:${{ steps.version.outputs.VERSION }}
+
+      - name: Update render.yaml
+        run: |
+          sed -i "s|url: docker.io/rctorres/iac-test:.*|url: docker.io/rctorres/iac-test:${{ steps.version.outputs.VERSION }}|" render.yaml
+          cat render.yaml
+
+      - name: Updating render file and triggering render sync
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add render.yaml
+          git commit -m "Update image version to ${{ steps.version.outputs.VERSION }}"
+          git push
