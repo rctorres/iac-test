@@ -4,15 +4,8 @@ services:
     runtime: docker
     region: ohio
     plan: 'free'
-    image:
-      url: docker.io/rctorres/iac-test:2025-01-15-9117f0b
-      creds:
-        fromRegistryCreds:
-          name: Dockerhub
     envVars:
       - key: DEBUG
-        value: 'true'
+        value: true
       - key: ENVIRONMENT
-        value: staging
-      - key: VERSION
-        value: 0.2
+        value: staging 
