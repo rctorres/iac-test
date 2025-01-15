@@ -47,4 +47,5 @@ jobs:
           curl --request PATCH \
           --url https://api.render.com/v1/blueprints/exs-cu3tao3tq21c73arfjr0 \
           --header 'accept: application/json' \
-          --header 'content-type: application/json'
+          --header 'content-type: application/json' \
+          --header 'Authorization: Bearer ${{ secrets.RENDER_API_KEY }}'
