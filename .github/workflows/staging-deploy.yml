@@ -42,11 +42,3 @@ jobs:
           git add render.yaml
           git commit -m "Update image version to ${{ steps.version.outputs.VERSION }}"
           git push
-
-      - name: Wait for first sync to complete
-        run: sleep 30
-
-      - name: Second commit - Trigger sync
-        run: |
-          git commit --allow-empty -m "Trigger Render sync"
-          git push
