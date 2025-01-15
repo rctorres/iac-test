@@ -3,7 +3,7 @@ services:
     name: production-api
     runtime: image
     image:
-      url: docker.io/rctorres/iac-test:2025-01-15-c02ec43
+      url: docker.io/rctorres/iac-test:2025-01-15-aaaaaaa
     region: ohio
     plan: 'free'
     envVars:
