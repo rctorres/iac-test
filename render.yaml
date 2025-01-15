@@ -1,7 +1,7 @@
 services:
   - type: web
     name: api
-    runtime: image
+    runtime: docker
     region: ohio
     plan: 'free'
     envVars:
