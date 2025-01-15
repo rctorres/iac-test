@@ -18,7 +18,7 @@ services:
     name: api
     runtime: image
     region: ohio
-    plan: ${RENDER_ENV == 'production' ? 'starter' : 'free'}
+    plan: 'free'
     image:
       url: rctorres/zefleu-delta-notional-svc-api:0.24
     envVarGroups:
