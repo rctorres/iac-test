@@ -1,18 +1,25 @@
-services:
-  - type: redis
-    name: no-sql-db
-    ipAllowList: []
-    region: ohio
-    plan: free
-    maxmemoryPolicy: noeviction
+envVarGroups:
+  - name: staging
+    envVars:
+      - key: DEBUG
+        value: true
+      - key: ENVIRONMENT
+        value: staging
 
+  - name: production
+    envVars:
+      - key: DEBUG
+        value: false
+      - key: ENVIRONMENT
+        value: production
+
+services:
   - type: web
     name: api
     runtime: image
     region: ohio
-    plan: free
+    plan: 'free'
     image:
       url: rctorres/zefleu-delta-notional-svc-api:0.24
-    envVars:
-      - key: DEBUG
-        value: false
+    envVarGroups:
+      - ${RENDER_ENV}
