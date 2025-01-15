@@ -1,25 +1,11 @@
-envVarGroups:
-  - name: staging
-    envVars:
-      - key: DEBUG
-        value: true
-      - key: ENVIRONMENT
-        value: staging
-
-  - name: production
-    envVars:
-      - key: DEBUG
-        value: false
-      - key: ENVIRONMENT
-        value: production
-
 services:
   - type: web
     name: api
     runtime: image
     region: ohio
     plan: 'free'
-    image:
-      url: rctorres/zefleu-delta-notional-svc-api:0.24
-    envVarGroups:
-      - ${RENDER_ENV}
+    envVars:
+      - key: DEBUG
+        value: true
+      - key: ENVIRONMENT
+        value: staging
