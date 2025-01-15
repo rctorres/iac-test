@@ -5,7 +5,7 @@ services:
     region: ohio
     plan: 'free'
     image:
-      url: docker.io/rctorres/iac-test:2025-01-15-7a4b83c
+      url: docker.io/rctorres/iac-test:2025-01-15-9117f0b
       creds:
         fromRegistryCreds:
           name: Dockerhub
