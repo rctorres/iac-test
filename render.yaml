@@ -9,3 +9,5 @@ services:
         value: true
       - key: ENVIRONMENT
         value: staging
+      - key: VERSION
+        value: 0.1
