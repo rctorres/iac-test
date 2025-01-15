@@ -16,8 +16,10 @@ envVarGroups:
 services:
   - type: web
     name: api
-    runtime: docker
+    runtime: image
     region: ohio
-    plan: 'free'
-    buildCommand: docker build -t api .
-    dockerfilePath: ./Dockerfile
+    plan: ${RENDER_ENV == 'production' ? 'starter' : 'free'}
+    image:
+      url: rctorres/zefleu-delta-notional-svc-api:0.24
+    envVarGroups:
+      - ${RENDER_ENV}
