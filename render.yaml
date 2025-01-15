@@ -4,6 +4,8 @@ services:
     runtime: docker
     region: ohio
     plan: 'free'
+    image:
+      url: rctorres/iac-test:0.2
     envVars:
       - key: DEBUG
         value: true
@@ -11,6 +13,3 @@ services:
         value: staging
       - key: VERSION
         value: 0.2
-# I want to create a github action that, whenever code is pushed to staging branch, it will perform the following steps:
-
-# 1) 
