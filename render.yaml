@@ -4,9 +4,6 @@ services:
     runtime: image
     image:
       url: docker.io/rctorres/iac-test:2025-01-15-9117f0b
-      creds:
-        fromRegistryCreds:
-          name: Dockerhub
     region: ohio
     plan: 'free'
     envVars:
