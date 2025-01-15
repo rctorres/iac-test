@@ -33,6 +33,7 @@ jobs:
       - name: Update render.yaml
         run: |
           sed -i "s|url: rctorres/iac-test:.*|url: rctorres/iac-test:${{ steps.version.outputs.VERSION }}|" render.yaml
+          cat render.yaml
 
       - name: First commit - Update image version
         run: |
