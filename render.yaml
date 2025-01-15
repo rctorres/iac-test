@@ -10,4 +10,7 @@ services:
       - key: ENVIRONMENT
         value: staging
       - key: VERSION
-        value: 0.1
+        value: 0.2
+# I want to create a github action that, whenever code is pushed to staging branch, it will perform the following steps:
+
+# 1) 
