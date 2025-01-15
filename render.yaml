@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: api
+    name: staging-api
     runtime: docker
     region: ohio
     plan: 'free'
