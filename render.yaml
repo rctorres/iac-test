@@ -3,7 +3,7 @@ services:
     name: staging-api
     runtime: image
     image:
-      url: docker.io/rctorres/iac-test:2025-01-15-9117f0b
+      url: docker.io/rctorres/iac-test:2025-01-15-bfd2233
     region: ohio
     plan: 'free'
     envVars:
