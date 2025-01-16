@@ -8,6 +8,6 @@ services:
     plan: 'free'
     envVars:
       - key: VERSION
-        value: 1.2
+        value: 1.5
       - key: ENVIRONMENT
         value: staging 
