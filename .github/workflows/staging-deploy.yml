@@ -35,10 +35,8 @@ jobs:
           sed -i "s|url: docker.io/rctorres/iac-test:.*|url: docker.io/rctorres/iac-test:${{ steps.version.outputs.VERSION }}|" render.yaml
           cat render.yaml
 
-      - name: Updating render file and triggering render sync
-        run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
-          git add render.yaml
-          git commit -m "Update image version to ${{ steps.version.outputs.VERSION }}"
-          git push
+      - name: Push changes to repository
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update image version to ${{ steps.version.outputs.VERSION }}"
+          file_pattern: 'render.yaml'
