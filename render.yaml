@@ -7,7 +7,7 @@ services:
     region: ohio
     plan: 'free'
     envVars:
-      - key: DEBUG
-        value: true
+      - key: VERSION
+        value: 1.2
       - key: ENVIRONMENT
         value: staging 
